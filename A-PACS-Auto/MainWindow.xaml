@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:A_PACS_Auto"
         mc:Ignorable="d"
-        Title="А-СКУД-Авто" Height="450" Width="800">
+        Title="А-СКУД-Авто" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center">
+                <Button x:Name="btnUpload" Background="Transparent" Height="50" Margin="15" BorderThickness="0" ToolTip="Загрузить изображение" Click="btnUpload_Click">
+                    <Image Source="Resources/uploadicon.png"/>
+                </Button>
+                <Button x:Name="btnScans" Background="Transparent" Height="50" Margin="15" BorderThickness="0" ToolTip="Сканировать номер" Click="btnScans_Click">
+                    <Image Source="Resources/scanicon.png"/>
+                </Button>
+            </StackPanel>
+            <StackPanel x:Name="leftStack" Grid.Row="1">
+                
+            </StackPanel>
+        </Grid>
+        <Image Grid.Column="1" Margin="10" x:Name="imgViewer"></Image>
     </Grid>
 </Window>
