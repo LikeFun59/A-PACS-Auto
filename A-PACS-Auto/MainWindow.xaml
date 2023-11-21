@@ -28,6 +28,7 @@
                 
             </StackPanel>
         </Grid>
-        <Image Grid.Column="1" Margin="10" x:Name="imgViewer"></Image>
+        <!--<Image Grid.Column="1" Margin="10" x:Name="imgViewer"></Image>-->
+        <MediaElement Grid.Column="1" Margin="10" x:Name="imgViewer"/>
     </Grid>
 </Window>

@@ -1,18 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
@@ -73,15 +64,22 @@ namespace A_PACS_Auto
 
         private void InsertTextAndPic (string text, IInputArray pic)
         {
-            Label label = new Label();
-            label.Content = text;
-            label.Width = 100;
-            label.Height = 30;
-            leftStack.Children.Add(label);
+            try
+            {
+                Label label = new Label();
+                label.Content = text;
+                label.Width = 150;
+                label.Height = 30;
+                leftStack.Children.Add(label);
 
-            Image img = new Image();
-            img = (Image)pic;
-            leftStack.Children.Add(img);
+                //MediaElement img2 = new MediaElement();
+                //Mat m = pic.GetInputArray().GetMat();
+                //leftStack.Children.Add(img2);
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
@@ -95,7 +93,7 @@ namespace A_PACS_Auto
                     Uri uri = new Uri(open.FileName);
                     BitmapImage bitmap = new BitmapImage();
                     bitmap.UriSource = uri;
-                    imgViewer.Source = bitmap;
+                    imgViewer.Source = uri;
                     inputImage = new Mat(open.FileName);
                 }
             }
@@ -107,7 +105,7 @@ namespace A_PACS_Auto
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            numRec = new ScanNum("Resources", "rus");
+            numRec = new ScanNum(@"D:\tessdata", "rus");
         }
 
         private void btnScans_Click(object sender, RoutedEventArgs e)

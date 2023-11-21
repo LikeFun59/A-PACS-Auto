@@ -26,7 +26,14 @@ namespace A_PACS_Auto.Classes
         /// <param name="lang">Язык распознавания</param>
         public ScanNum (string pathTess, string lang)
         {
-            OCR = new Tesseract(pathTess, lang, OcrEngineMode.TesseractLstmCombined);
+            try
+            {
+                OCR = new Tesseract(pathTess, lang, OcrEngineMode.TesseractLstmCombined);
+            }
+            catch
+            {
+                //
+            }
         }
 
         /// <summary>
